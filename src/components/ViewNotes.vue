@@ -6,6 +6,7 @@
 			</h2>
 			<p>{{ note.content }}</p>
 			<p class="date">Created: {{ note.dateCreated }}</p>
+			<p class="date" v-show="note.dateEdited">Edited: {{ note.dateEdited }}</p>
 			<button @click="deleteNote(note.id, index)">
 				❌
 			</button>

@@ -1,17 +1,19 @@
 <template>
-	<div>
+	<section>
 		<inputForm @update-notes="addNote"></inputForm>
+		<Stats :stats="stats"></Stats>
 		<ViewNotes
 			:notes="notes"
 			@delete-note="removeNote"
 			@pin-note="pinNote"
 		></ViewNotes>
-	</div>
+	</section>
 </template>
 
 <script>
 import inputForm from './PostNote'
 import ViewNotes from './ViewNotes'
+import Stats from './Stats'
 import axios from 'axios'
 
 export default {
@@ -20,10 +22,12 @@ export default {
 	components: {
 		inputForm,
 		ViewNotes,
+		Stats,
 	},
 	data: function() {
 		return {
 			notes: [],
+			stats: Object,
 		}
 	},
 	methods: {
@@ -57,12 +61,14 @@ export default {
 			this.notes.splice(index, 1)
 		},
 		pinNote(id, index) {
+			let today = new Date().toISOString().slice(0, 10)
 			let updatedNote = this.notes[index]
 			if (updatedNote.pinned) {
 				updatedNote.pinned = false
 			} else {
 				updatedNote.pinned = true
 			}
+			updatedNote.dateEdited = today
 
 			axios.put('http://localhost:8080/api/notes/' + id, updatedNote)
 		},
@@ -74,9 +80,21 @@ export default {
 			})
 			.then((data) => {
 				this.notes = data
-			})
+			}),
+			fetch('http://localhost:8080/api/notes/stats')
+				.then((response) => {
+					return response.json()
+				})
+				.then((data) => {
+					this.stats = data
+				})
 	},
 }
 </script>
 
-<style></style>
+<style>
+section {
+	display: flex;
+	gap: 1rem;
+}
+</style>

@@ -26,8 +26,6 @@ export default {
 			form: {
 				title: '',
 				content: '',
-				dateCreated: '',
-				dateEdited: '',
 			},
 		}
 	},
@@ -71,6 +69,7 @@ export default {
 	background-color: white;
 	border-radius: 5px;
 	border: 1px solid lightgray;
+	height: 250px;
 }
 
 .form-box > h1 {
