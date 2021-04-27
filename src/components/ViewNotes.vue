@@ -1,9 +1,11 @@
 <template>
 	<div class="grid-container">
-		<div class="note-item" v-for="(note, index) in notes" v-bind:key="note.id">
-			<h2>
-				{{ note.title }} (id: {{ note.id }}) <span v-if="note.pinned">〽</span>
-			</h2>
+		<!-- Pinned items -->
+
+		<div v-for="(note, index) in notes" v-bind:key="note.id" class="note-item">
+			<p class="note-header">
+				{{ note.title }}<span v-if="note.pinned">〽</span>
+			</p>
 			<p>{{ note.content }}</p>
 			<p class="date">Created: {{ note.dateCreated }}</p>
 			<p class="date" v-show="note.dateEdited">Edited: {{ note.dateEdited }}</p>
@@ -57,8 +59,20 @@ export default {
 	text-align: left;
 }
 
+.note-header {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+}
+
 .note-item:hover {
 	box-shadow: 4px 4px 5px lightgray;
+}
+
+.span-row {
+	flex-basis: 100%;
+	border-bottom: 2px solid black;
 }
 
 .date {
