@@ -1,34 +1,27 @@
 <template>
 	<div id="app">
-		<note></note>
+		<Index></Index>
 	</div>
 </template>
 
 <script>
-import Note from './components/Note'
+import Index from './components/Index'
 
 export default {
 	name: 'App',
 	components: {
-		Note,
+		Index,
 	},
 }
 </script>
-ViewNotes
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Arvo:wght@700&family=Open+Sans&display=swap');
 
 #app {
-	padding: 15px;
-	display: flex;
-	justify-content: flex-start;
-	gap: 2rem;
-	flex-direction: row;
-	flex-wrap: wrap;
-	background-color: #efefef;
+	padding: 1rem;
+
 	font-family: 'Open Sans', Arial, sans-serif;
-	text-align: center;
 }
 
 p {
