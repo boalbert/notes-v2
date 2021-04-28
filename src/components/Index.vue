@@ -2,24 +2,22 @@
 	<section>
 		<CreateNote class="span-row" @update-notes="addNote"></CreateNote>
 
-		<div class="grid-container">
-			<Stats :note="notes"></Stats>
+		<masonry :cols="{ default: 4, 1000: 3, 700: 2, 400: 1 }">
 			<Note
 				:note="note"
-				v-for="(note, index) in notes"
+				v-for="(note, index) in sortedNotes"
 				v-bind:key="note.id"
 				@delete-note="removeNote(note.id, index)"
 				@pin-note="pinNote(note.id, index)"
 			>
 			</Note>
-		</div>
+		</masonry>
 	</section>
 </template>
 
 <script>
 import CreateNote from './CreateNote'
 import Note from './Note'
-import Stats from './Stats'
 import axios from 'axios'
 
 export default {
@@ -28,7 +26,6 @@ export default {
 	components: {
 		CreateNote,
 		Note,
-		Stats,
 	},
 	data: function() {
 		return {
@@ -81,20 +78,17 @@ export default {
 	},
 	mounted() {
 		this.fetchData()
-		// fetch('http://localhost:8080/api/notes')
-		// 	.then((response) => {
-		// 		return response.json()
-		// 	})
-		// 	.then((data) => {
-		// 		this.notes = data
-		// 	}),
-		// 	fetch('http://localhost:8080/api/notes/stats')
-		// 		.then((response) => {
-		// 			return response.json()
-		// 		})
-		// 		.then((data) => {
-		// 			this.stats = data
-		// 		})
+	},
+	computed: {
+		sortedNotes: function() {
+			let sortByPinned = this.notes
+
+			sortByPinned = sortByPinned.sort((a, b) => {
+				return b.pinned - a.pinned
+			})
+
+			return sortByPinned
+		},
 	},
 }
 </script>

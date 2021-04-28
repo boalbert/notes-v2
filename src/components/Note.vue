@@ -2,7 +2,10 @@
 	<article class="note-item">
 		<!-- Header -->
 		<div class="note-header">
-			<h3><span v-if="note.pinned">+</span>{{ note.title }}</h3>
+			<h4>
+				<span @click="pinNote(note.id, index)" v-if="note.pinned">📌 </span
+				>{{ note.title }}
+			</h4>
 
 			<div class="note-buttons">
 				<p @click="pinNote(note.id, index)">
@@ -22,7 +25,7 @@
 		<!-- Date -->
 		<div class="note-date">
 			<p v-if="!note.dateEdited">Created: {{ note.dateCreated }}</p>
-			<p v-show="note.dateEdited">Edited: {{ note.dateEdited }}</p>
+			<p v-show="note.dateEdited">Updated: {{ note.dateEdited }}</p>
 		</div>
 	</article>
 </template>
@@ -52,13 +55,13 @@ p {
 	word-break: break-all;
 }
 .note-item {
+	margin: 5px;
 	padding: 15px;
 	display: grid;
 	border: 1px solid #e0e0e0;
 	border-radius: 7px;
 	transition: box-shadow 100ms;
 	text-align: left;
-	width: 200px;
 }
 
 .note-item:hover {
@@ -79,8 +82,12 @@ p {
 }
 
 .note-date {
-	display: flex;
+	visibility: hidden;
 	color: darkgray;
+}
+
+.note-item:hover .note-date {
+	visibility: visible;
 }
 
 .note-date p {
@@ -88,13 +95,14 @@ p {
 }
 
 .note-buttons {
-	opacity: 0;
+	visibility: hidden;
 	display: flex;
 	color: transparent;
 	text-shadow: 0 0 0 darkgrey;
 	font-size: 13px;
 	text-align: right;
 	cursor: pointer;
+	gap: 15px;
 }
 
 .note-buttons button {
@@ -104,6 +112,6 @@ p {
 }
 
 .note-item:hover .note-buttons {
-	opacity: 1;
+	visibility: visible;
 }
 </style>

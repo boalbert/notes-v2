@@ -13,6 +13,7 @@
 				v-model="form.content"
 				placeholder="Add a note..."
 				maxlength="999"
+				required
 			/>
 
 			<button type="submit">💾</button>
