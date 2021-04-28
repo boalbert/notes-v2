@@ -18,3 +18,5 @@ Varje anteckning hämtas via API från databasen. Array sorteras på `boolean: p
 - Körs i docker
 
 ## Demo
+
+[Demo!](https://github.com/boalbert/notes-v2/blob/master/Demo-notes-v2.gif)
