@@ -19,4 +19,4 @@ Varje anteckning hämtas via API från databasen. Array sorteras på `boolean: p
 
 ## Demo
 
-[Demo!](https://github.com/boalbert/notes-v2/blob/master/Demo-notes-v2.gif)
+[Demo!](https://raw.githubusercontent.com/boalbert/notes-v2/master/Demo-notes-v2.gif)
