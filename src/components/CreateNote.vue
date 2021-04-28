@@ -54,7 +54,6 @@ form {
 	width: 18rem;
 	text-align: center;
 	border-radius: 7px;
-	/* max-height: 250px; */
 	box-shadow: 0 0 8px 1px lightgray;
 	border: 2px solid #e0e0e0;
 	border-radius: 7px;
@@ -79,7 +78,6 @@ textarea {
 	border: none;
 	padding: 10px;
 	width: 15rem;
-	/* background-color: #efefef; */
 }
 
 textarea {

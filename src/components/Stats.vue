@@ -1,3 +1,5 @@
+// Component not in use atm
+
 <template>
 	<div class="stat-item" v-if="note.length > 0">
 		<h1>Stats</h1>

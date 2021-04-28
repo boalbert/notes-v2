@@ -94,6 +94,11 @@ export default {
 </script>
 
 <style>
+section {
+	display: grid;
+	gap: 1rem;
+}
+
 .grid-container {
 	display: flex;
 	flex-wrap: wrap;
@@ -103,11 +108,5 @@ export default {
 
 .span-row {
 	justify-self: center;
-}
-
-section {
-	display: grid;
-
-	gap: 1rem;
 }
 </style>
