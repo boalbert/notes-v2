@@ -1,35 +1,20 @@
-# notes-v2
+# Notes (Vue.js, Spring, Docker)
 
-## Info
+Enkel applikation för att spara anteckningar. Anteckningar man vill ge extra fokus kan 'pinnas'.
 
-Version 2 of Notes app. Talks to backend Spring Api with MariaDB in docker.
+## Allmänt
 
-# Misc
+Varje anteckning hämtas via API från databasen. Array sorteras på `boolean: pinned`.
 
-## Project setup
+## Frontend
 
-```
-npm install
-```
+- Skapad i Vue.js
+- Layout bygger på en CSS grid, flexibel höjd på anteckningar hjälper `Vue-masonry-css` till med.
 
-### Compiles and hot-reloads for development
+## Backend
 
-```
-npm run serve
-```
+- API är skriven i Java (mha. Spring)
+- Data sparas i en MariaDB datasbas
+- Körs i docker
 
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Demo
